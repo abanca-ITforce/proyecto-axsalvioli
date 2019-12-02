@@ -1,1 +1,8 @@
-<p>home works!</p>
+<mat-nav-list *ngIf="countrysList$ | async as countrysList; else empty">
+  <a *ngFor="let country of countrysList" mat-list-item>
+    {{country.name}}
+  </a>
+</mat-nav-list>
+<ng-template #empty>
+  <h1>CARGANDO ...</h1>
+</ng-template>
