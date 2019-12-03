@@ -1,5 +1,5 @@
 <mat-nav-list *ngIf="countrysList$ | async as countrysList; else empty">
-  <a *ngFor="let country of countrysList" mat-list-item>
+  <a *ngFor="let country of countrysList" mat-list-item [routerLink]="country.id">
     {{country.name}}
   </a>
 </mat-nav-list>

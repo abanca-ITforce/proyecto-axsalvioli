@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ExploradorService {
-  private url = 'https://api.worldbank.org/v2/country?per_page=1000&format=json';
+  private urlAllCountrys = 'https://api.worldbank.org/v2/country?per_page=1000&format=json';
   CountryList: any[];
 
   constructor(private http: HttpClient) {
@@ -22,13 +22,13 @@ export class ExploradorService {
   }
 
   getCountrys$() {
-    return this.http.get<any[]>(this.url).pipe(map(data => (data[1])));
+    return this.http.get<any[]>(this.urlAllCountrys).pipe(map(data => (data[1])));
   }
 
   getCountryById$(id) {
     return this.http
-      .get<any>(this.url + '/' + id)
-      .pipe(map(data => (data ? data : {})));
+      .get<any>('https://api.worldbank.org/v2/country/' + id + '?per_page=1&format=json')
+      .pipe(map(data => (data[1])));
   }
 
   }

@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   countrysList$: Observable<any[]>;
   constructor(
-    activatedRoute: ActivatedRoute,
     private exploradorService: ExploradorService
   ) {
 
