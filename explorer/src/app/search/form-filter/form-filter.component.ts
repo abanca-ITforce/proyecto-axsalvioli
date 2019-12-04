@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 
@@ -12,11 +12,11 @@ export class FormFilterComponent {
   formFilter = new FormGroup({
   incomingLevel: new FormControl()
   });
-
-  @Output() states;
+  @Output() post = new EventEmitter<any>();
   constructor(private fb: FormBuilder) {}
 
   onSubmit() {
+    this.post.emit(this.formFilter.value);
   }
 }
 
